@@ -37,11 +37,24 @@ var Ennemy = function(name, color, position, direction) {
     
     Ennemy.prototype.move = function () {
         var moveTo = new THREE.Vector3(
-            10+ this.graphic.position.x,
+            1+ this.graphic.position.x,
             this.graphic.position.y,
             this.graphic.position.z
         );
         this.graphic.position = moveTo;
+
+        var x = ennemy1.graphic.position.x + WIDTH / 2;
+        var y = ennemy1.graphic.position.y + HEIGHT / 2;
+        if ( x < 0 )
+            ennemy1.graphic.position.x -= x - WIDTH / 2;
+        if ( x > WIDTH )
+            ennemy1.graphic.position.x -= x - WIDTH;
+        if ( y < 0 )
+            ennemy1.graphic.position.y -= y;
+        if ( y > HEIGHT )
+            ennemy1.graphic.position.y -= y - HEIGHT;
+
+
         if (this.speed > 0) {
             this.speed = this.speed - 0.04;
         }
