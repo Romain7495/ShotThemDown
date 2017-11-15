@@ -39,20 +39,26 @@ function Ground(color, size_x, size_y, nb_tile)
     sizeOfTileX = size_x / nb_tile;
     minX = -(size_x/2);
     maxX = (size_x/2);
+    averageX = (minX + maxX) / 2
     
     sizeOfTileY = size_y / nb_tile;
     minY = -(size_y/2);
     maxY = (size_y/2);
+    averageY = (minY + maxY) / 2
 
     for (x = minX; x <= maxX; x = x+sizeOfTileX){
         for (y = minY; y <= maxY; y = y+sizeOfTileY){
-
-            color = colors[Math.floor(Math.random()*colors.length)];
+            len = colors.length;
+            if (averageY == y && averageX == x) {
+                len = len - 1;
+            } 
+            color = colors[Math.floor(Math.random()*len)];
+            
        
             if (0x000000 != color)
             {
                 tmpGround = new THREE.Mesh(
-                new THREE.PlaneGeometry(sizeOfTileX-10, sizeOfTileY-10),
+                new THREE.PlaneGeometry(sizeOfTileX - 10, sizeOfTileY -10),
                 new THREE.MeshLambertMaterial({color: color, transparent: true, opacity: 0.6}));
                 tmpGround.position.x = x;
                 tmpGround.position.y = y;
@@ -62,11 +68,12 @@ function Ground(color, size_x, size_y, nb_tile)
                 noGround.push([x, y]);
         }
     }
+
 }
 
 function Light(name, color, position)
 {
-    pointLight = new THREE.PointLight(color, 50, 350);
+    pointLight = new THREE.PointLight(color, 50, 1000000);
 
     pointLight.position.x = position.split(',')[0];
     pointLight.position.y = position.split(',')[1];

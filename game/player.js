@@ -56,8 +56,8 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
@@ -71,7 +71,6 @@ Player.prototype.move = function () {
         this.speed * Math.sin(this.direction) + this.graphic.position.y,
         this.graphic.position.z
     );
-
     this.graphic.position = moveTo;
     if (this.speed > 0) {
         this.speed = this.speed - 0.04;
