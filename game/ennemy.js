@@ -35,11 +35,6 @@ var Ennemy = function(name, color, position, direction) {
             init();
     }
     
-   
-    
-   
-    
-    
     Ennemy.prototype.move = function () {
         var moveTo = new THREE.Vector3(
             10+ this.graphic.position.x,
@@ -54,8 +49,5 @@ var Ennemy = function(name, color, position, direction) {
             this.speed = this.speed + 0.04
         }
     
-        light1.position.x = this.graphic.position.x;
-        light1.position.y = this.graphic.position.y;
-       // light1.position.z = this.graphic.position.z + 500;
     };
     
