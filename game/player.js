@@ -71,6 +71,7 @@ Player.prototype.move = function () {
         this.speed * Math.sin(this.direction) + this.graphic.position.y,
         this.graphic.position.z
     );
+  
     this.graphic.position = moveTo;
     if (this.speed > 0) {
         this.speed = this.speed - 0.04;
